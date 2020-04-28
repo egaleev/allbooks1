@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{%block content%}
+{% for item in reserves%}
+<div id="posts" class="container" class="text-center">
+    <ul class="list-group">
+        <form action="/admin/reserves/{{item}}" method="POST">
+            <li class="list-group-item">
+                Пользователь {{item.user_name}} забронировал книгу {{item.book_name}} на {{item.time}}
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Удалить бронь
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Вы уверены?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                <a href="/admin/delete_reserve/{{item.id}}/1">
+                                    <button type="button" class="btn btn-danger">Да, удалить</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/admin/delete_reserve/{{item.id}}/0">
+                    <button type="button" class="btn btn-info">Выдать книгу</button>
+                </a>
+            </li>
+        </form>
+    </ul>
+</div>
+{%endfor%}
+{%endblock%}

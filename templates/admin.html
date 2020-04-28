@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+{%block content%}
+<a href="/admin/create_post">
+    <button type="button" class="btn btn-primary btn-lg">Создать новый пост</button>
+</a>
+<a href="/admin/reserves">
+    <button type="button" class="btn btn-primary btn-lg">Посмотреть список броней</button>
+</a>
+<a href="/admin/mailing">
+    <button type="button" class="btn btn-primary btn-lg">Начать рассылку</button>
+</a>
+{% for item in posts%}
+<div id="posts" class="container" class="text-center">
+    <form action="/admin/delete_post/{{item.id}}" method="POST">
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{item.title}}
+
+                <a href="/admin/edit/{{item.id}}">
+                    <button type="button" class="btn btn-info">Редактировать</button>
+                </a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Удалить
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Вы уверены?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                <button type="submit" class="btn btn-danger">Да, удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+{%endfor%}
+{%endblock%}

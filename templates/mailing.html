@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{% block content %}
+<h2>Рассылка</h2>
+<div class="col-md-6">
+    <form method="POST">
+        {% for field in form%}
+        <div class="form-group">
+            {{ field.label(class = 'control-label') }}
+            {{ field(class = 'form-control') }}
+        </div>
+        {%endfor %}
+    </form>
+</div>
+{%endblock%}}

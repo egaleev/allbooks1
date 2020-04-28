@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{% block content %}
+<h2>Изменить</h2>
+<div class="col-md-6">
+    <form action="{{url_for('edit_post', pos=post.id )}}" method="POST">
+        {% for field in form%}
+        <div class="form-group">
+            {{ field.label(class = 'control-label') }}
+            {{ field(class = 'form-control') }}
+        </div>
+        {%endfor %}
+        <button type="submit" class="btn btn-success">Отредактировать</button>
+    </form>
+
+</div>
+{%endblock%}

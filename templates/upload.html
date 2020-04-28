@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Отправка файла на сервер</title>
+</head>
+<body>
+<form enctype="multipart/form-data" method="post">
+    {%extends "base.html"%}
+    {%block content%}
+    <div class="col-md-6">
+        <h1>Загрузка книги</h1>
+        <form action="" method="post">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.title.label }}<br>
+                {{ form.title(class="form-control", type="email") }}<br>
+                {% for error in form.title.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            </p>
+            <p>
+                {{ form.content.label }}<br>
+                {{ form.content(class="form-control", type="text") }}<br>
+                {% for error in form.content.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            <p>
+                {{ form.available.label }}<br>
+                {{ form.available(class="form-control", type="text") }}<br>
+                {% for error in form.available.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            </p>
+            <p>
+                {{ form.file.label }}<br>
+                {{ form.file(class="form-control", type="file", enctype="multipart/form-data") }}<br>
+                {% for error in form.file.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+
+            <p>
+                {{ form.pic.label }}<br>
+                {{ form.pic(class="form-control", type="file", enctype="multipart/form-data") }}<br>
+                {% for error in form.pic.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+            <div>{{ message }}</div>
+        </form>
+    </div>
+    {%endblock%}
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="col-md-6">
+    <div class="container" align="text-center">
+        <h5>Для покупки, оплатите 30 rub QIWI по указанным реквезитам:</h5>
+        <ul class="list-group">
+            <li class="list-group-item disabled" aria-disabled="true">Номер: +79090583560</li>
+            <li class="list-group-item">Комменатрий к оплате: {{code}}</li>
+        </ul>
+        После оплаты, книга автоматически отправится на привязонную почту
+        <form method="POST">
+            {% for field in form%}
+            <div class="form-group">
+                {{ field.label(class = 'control-label') }}
+                {{ field(class = 'form-control') }}
+            </div>
+            {%endfor %}
+            {% if status == Оплачено%}
+            <div>
+                <div class="alert alert-info" role="alert">
+                    {{status}}
+                </div>
+            </div>
+            {% else%}
+            <div class="alert alert-info" role="alert">
+                {{status}}
+            </div>
+            {% endif%}
+        </form>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block style%}
+<style>
+    #posts {
+        background: #6c757d;
+        width: 500px; /* Ширина слоя */
+        margin: 10px; /* Значение отступов */
+        padding: 1px; /* Поля вокруг текста */
+
+    }
+</style>
+{%endblock%}
+{% block content %}
+{% for item in posts%}
+<div id="posts" class="container" class="text-center">
+    <a href="/post/{{item.id}}">
+        <span class="badge badge-dark"><h5>{{item.title}}</h5></span>
+    </a>
+    <div>
+        <a href="/post/{{item.id}}">Подробнее</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

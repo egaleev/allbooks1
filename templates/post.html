@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{%block style%}
+<style>
+    #post {
+        width: 5000px; /* Ширина слоя */
+        line-height: 1.25;
+        padding: 10px; /* Поля вокруг текста */
+    }
+</style>
+{%endblock%}
+{%block content%}
+<div id="post" class="container" class="text-center">
+    <h1 align="left">
+        <span class="badge badge-secondary"><h5>{{item.title}}</h5></span></h1>
+    <img src="{{way}}" align="right">
+    <br>{{item.content}}</br>
+    <div>
+    </div>
+    <a href="/reserve/{{item.id}}">
+        {%if a > 0 %}
+        <button type="button" class="btn btn-primary">
+            В наличии <span class="badge badge-light">{{item.available}}</span>
+        </button>
+        {%endif%}
+    </a>
+    <a href="/payment/{{item.id}}/{{code}}">
+        <button type="button" class="btn btn-success">Купить электронную версию</button>
+    </a>
+</div>
+</div>
+{%endblock%}
