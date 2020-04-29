@@ -349,7 +349,8 @@ def main():
     db_session.global_init("db/users.sqlite")
     session = db_session.create_session()
     session.commit()
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
