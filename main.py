@@ -24,9 +24,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
-smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
-smtpObj.starttls()
-smtpObj.login('allofbooks2020@gmail.com', '123QWEasdZXC')
 
 
 def send_book(pos, mail):
