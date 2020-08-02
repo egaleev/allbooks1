@@ -19,10 +19,6 @@ from data.__all_models import Post
 from data.forms import RegisterForm, LoginForm, PostForm, ReserveForm, MailingForm, PaymentForm
 from flask import redirect, url_for
 import requests
-from OpenSSL import SSL
-context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-context.use_privatekey_file('server.key')
-context.use_certificate_file('server.crt')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
@@ -349,8 +345,8 @@ def main():
     db_session.global_init("db/users.sqlite")
     session = db_session.create_session()
     session.commit()
-    port = int(os.environ.get("PORT", 443))
-    app.run(host='0.0.0.0', port=port, ssl_context=context)
+    port = int(os.environ.get("PORT", 80))
+    app.run(host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
